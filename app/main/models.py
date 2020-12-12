@@ -38,9 +38,23 @@ class Blog(db.Model):
     description = db.Column(db.String(255), index=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id',ondelete='CASCADE'), nullable=False)
 
-def save_blog(self):
+    def save_blog(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def get_blogs(cls, id):
+        blogs = Blog.query.filter_by(id=id).all()
+        return blogs
+    @classmethod
+    def get_all_blogs(cls):
+        blogs = Blog.query.order_by('-id').all()
+        return blogs
+    def __repr__(self):
+        return f'Blogs {self.blog_title}'
+
+
+
    
     
 
