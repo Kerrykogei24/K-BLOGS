@@ -61,10 +61,21 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id',ondelete='CASCADE'))
     date = db.Column(db.DateTime, default=datetime.utcnow)
 
-    
+
     def save_comment(self):
         db.session.add(self)
         db.session.commit()
+
+    @classmethod
+    def get_comments(cls, blog_id):
+        comments = Comment.query.filter_by(blog_id=blog_id).all()
+        return comments
+    def delete_comment(self):
+        db.session.delete(self)
+        db.session.commit()
+    def __repr__(self):
+        return f'Comments: {self.comment}'
+
 
    
     
