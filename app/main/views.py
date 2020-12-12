@@ -108,3 +108,25 @@ def view(id):
     return render_template('view.html', blog=blog, blog_comments=blog_comments, comment_form=comment_form)
 
 
+@main.route('/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
+def delete(id):
+    blog = Blog.query.get_or_404(id)
+    if blog.user != current_user:
+        abort(403)
+    db.session.delete(blog)
+    db.session.commit()
+ 
+    return redirect(url_for('main.theblog'))
+
+@main.route('/delete_comment/<int:comment_id>', methods=['GET', 'POST'])
+@login_required
+def delete_comment(comment_id):
+    comment =Comment.query.get_or_404(comment_id)
+    if (comment.user.id) != current_user.id:
+        abort(403)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('comment succesfully deleted')
+    return redirect (url_for('main.theblog'))
+
