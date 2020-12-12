@@ -24,7 +24,21 @@ class User(UserMixin,db.Model):
         self.pass_secure = generate_password_hash(password)
 
     def verify_password(self,password):
-    return check_password_hash(self.pass_secure,password)
+        return check_password_hash(self.pass_secure,password)
+
+
+    def __repr__(self):
+        return f'User {self.username}'
+
+class Blog(db.Model):
+    __tablename__ = 'blogs'
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+    title_blog = db.Column(db.String(255), index=True)
+    description = db.Column(db.String(255), index=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id',ondelete='CASCADE'), nullable=False)
+   
+    
 
 
 
