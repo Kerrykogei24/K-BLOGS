@@ -1,14 +1,21 @@
 {% extends 'base.html'%} {% import "bootstrap/wtf.html" as wtf %} {% block content %}
 
 <div class="jumbotron text-center">
-    <h1 class="display-2">Blog-Tech</h1><br>
-    <small><h4>WELCOME ENJOY YOUR STAY!!</h4></small>
+    <h2 style="font-size: 80px; font-family: 'Lobster', cursive;  padding-top: 40px; text-align: center;">
+        Welcome to K-Blogs
+        <hr>Website</h2>
 </div>
-<div class="container">
-    <div style="width: 60%; height:50%">
-        <h2>Join Blog-Tech</h2>
-        <br> {{ wtf.quick_form(subscriber_form) }}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-8">
+            <div style="width: 60%; height:50%">
+                <h2>Join K-Blogs</h2>
+                <br> {{ wtf.quick_form(subscriber_form) }}
 
+            </div>
+        </div>
+        <div class="col-md-1"></div>
     </div>
 </div>
 {% endblock %}
