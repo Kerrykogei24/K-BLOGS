@@ -20,7 +20,7 @@
         <div class="col-md-4">
             <p> <b>Name:</b> {{user.firstname}} {{user.lastname}} </p>
             <p><b> No of blogs:</b> {{blogs}}</p>
-            <p><b> Date joined: </b>{{date}}</p>
+            <p><b> Date joined: </b>{{user.date_joined.strftime("%Y-%m-%d")}}</p>
         </div>
 
         <div class="col-md-4">
