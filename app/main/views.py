@@ -65,6 +65,7 @@ def blogs():
     """
     subscribers = Subscriber.query.all()
     blog_form = BlogForm()
+    blog = Blog.query.order_by(Blog.date.desc()).all()
     if blog_form.validate_on_submit():
         title_blog= blog_form.title_blog.data
         description = blog_form.description.data
@@ -72,7 +73,7 @@ def blogs():
         db.session.add(new_blog)
         db.session.commit()
         for subscriber in subscribers:
-            mail_message("Alert New Blog","email/new_blog",subscriber.email,blog=blog)
+            mail_message("Alert New Blog","email/new_blog",subscriber.email,new_blog=new_blog)
         return redirect(url_for('main.index'))
         flash('New Blog Posted')
         return redirect(url_for('main.theblog'))
@@ -151,6 +152,7 @@ def subscriber():
         subscriber= Subscriber(email=subscriber_form.email.data,name = subscriber_form.name.data)
 
         db.session.add(subscriber)
+        db.session.commit()
 
         mail_message("Welcome to K-Blogs","email/subscriber",subscriber.email,subscriber=subscriber)
 
