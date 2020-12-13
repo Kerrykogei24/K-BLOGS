@@ -10,18 +10,15 @@
             <a href="/ " class="navbar-brand "><Strong>FAVORITE PITCH</Strong></a>
         </div>
         <div class="navbar-collapse collapse ">
-            <ul class="nav navbar-nav ">
-                <li>
-                    <a href="/ " style="text-decoration: none;">HOME</a>
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a href="{{url_for('main.index')}}" class="nav-link"><span style="font-family: 'Lobster', cursive;">Home</span> </a>
                 </li>
-                <li>
-                    <a href="{{url_for( 'main.index')}} " style="text-decoration: none; ">ENTERTAINMENT</a>
+                <li class="nav-item">
+                    <a href="{{url_for('main.theblog')}}" class="nav-link"><span style="font-family: 'Lobster', cursive;">Blogs</span></a>
                 </li>
-                <li>
-                    <a href="{{url_for( 'main.theblog')}} " style="text-decoration: none; ">MOTIVATIONAL</a></li>
-                <li>
-                    <a href="{{url_for( 'main.blogs')}} " style="text-decoration: none; ">LOVE</a>
-                </li>
+
+
             </ul>
 
             <ul class="nav navbar-nav navbar-right ">

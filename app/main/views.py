@@ -4,6 +4,7 @@ from .forms import UpdateProfile,BlogForm,CommentForm
 from .. import db, photos
 from ..models import User, Comment, Blog
 from flask_login import login_required, current_user
+from ..request import get_blogQuotes
 
 # Views
 @main.route('/')
