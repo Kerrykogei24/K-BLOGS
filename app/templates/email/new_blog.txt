@@ -1,4 +1,4 @@
-Dear subscriber!
+Dear Subscriber!
 
 Sign in and check out this new Post and comment
 
@@ -7,4 +7,4 @@ Post: {{new_blog.description|truncate(30)}}
 
 
 Yours sincerely,
-Best Blog Creators.
+Best K-Blogs Creators.
