@@ -29,9 +29,11 @@
 
 
                 <li>
+                    <a href="{{url_for( 'main.subscriber',uname=current_user.username)}} " style="text-decoration: none; ">SUBSCRIBE</a>
+                </li>
+                <li>
                     <a href="{{url_for( 'main.profile',uname=current_user.username)}} " style="text-decoration: none; "> PROFILE</a>
                 </li>
-
                 <li>
                     <a href="{{url_for( 'auth.logout')}} " style="text-decoration: none; ">SIGN OUT</a>
                 </li>

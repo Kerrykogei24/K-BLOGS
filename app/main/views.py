@@ -1,10 +1,11 @@
 from flask import render_template,request,redirect,url_for,abort,flash
 from . import main
-from .forms import UpdateProfile,BlogForm,CommentForm
+from .forms import UpdateProfile,BlogForm,CommentForm, SubscriberForm
 from .. import db, photos
-from ..models import User, Comment, Blog
+from ..models import User, Comment, Blog,Subscriber
 from flask_login import login_required, current_user
 from ..request import get_blogQuotes
+from ..email import mail_message
 
 # Views
 @main.route('/')
@@ -62,6 +63,7 @@ def blogs():
     """
     View Blog function that returns the BLog page and data
     """
+    subscribers = Subscriber.query.all()
     blog_form = BlogForm()
     if blog_form.validate_on_submit():
         title_blog= blog_form.title_blog.data
@@ -69,6 +71,10 @@ def blogs():
         new_blog = Blog(title_blog=title_blog, description=description, user=current_user)
         db.session.add(new_blog)
         db.session.commit()
+        for subscriber in subscribers:
+            mail_message("Alert New Blog","email/new_blog",subscriber.email,blog=blog)
+        return redirect(url_for('main.index'))
+        flash('New Blog Posted')
         return redirect(url_for('main.theblog'))
     title = 'My Blog'
     return render_template('blogs.html', title=title, blog_form=blog_form)
@@ -134,3 +140,26 @@ def delete_comment(comment_id):
     flash('comment succesfully deleted')
     return redirect (url_for('main.theblog'))
 
+@main.route('/subscribe', methods=['GET','POST'])
+def subscriber():
+    blogQuote = get_blogQuotes()
+    subscriber_form=SubscriberForm()
+    blog = Blog.query.order_by(Blog.date.desc()).all()
+
+    if subscriber_form.validate_on_submit():
+
+        subscriber= Subscriber(email=subscriber_form.email.data,name = subscriber_form.name.data)
+
+        db.session.add(subscriber)
+
+        mail_message("Welcome to K-Blogs","email/subscriber",subscriber.email,subscriber=subscriber)
+
+        title= "K-BLOGS"
+        return render_template('index.html',title=title, blog=blog, blogQuote=blogQuote)
+
+    subscriber = Blog.query.all()
+
+    blog = Blog.query.all()
+
+
+    return render_template('subscribe.html',subscriber=subscriber,subscriber_form=subscriber_form,blog=blog)
