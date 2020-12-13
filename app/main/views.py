@@ -56,6 +56,8 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
+@main.route('/blog/new', methods=['GET', 'POST'])
+@login_required
 def blogs():
     """
     View Blog function that returns the BLog page and data
