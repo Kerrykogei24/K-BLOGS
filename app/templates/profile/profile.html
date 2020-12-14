@@ -28,7 +28,7 @@
 
         <!--Displaying user bio-->
         {% if user.bio %}
-        <p> {{user.bio}}</p>
+        <p> {{user.bio}}.</p>
         {%else%}
         <p> {{user.username| capitalize}} has no bio </p>
         {% endif %} {% if user == current_user %}
