@@ -14,10 +14,10 @@ class Config:
     MAIL_SERVER = 'smtp.gmail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get("MAIL_USERNAME")
-    MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
+    MAIL_USERNAME = 'dellakomar27@gmail.com'
+    MAIL_PASSWORD = '0726113175'
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    SENDER_EMAIL = 'kerrykomar@gmail.com'
+    SENDER_EMAIL = 'dellakomar27@gmail.com'
 
 
     # simple mde  configurations
