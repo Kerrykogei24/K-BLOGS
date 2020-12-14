@@ -1,5 +1,18 @@
 {% extends 'base.html' %} {%import "bootstrap/wtf.html" as wtf%}{% block content %}
 <div class="container">
-    {{wtf.quick_form(form)}}
+    <div class="row">
+        <div class="col-md-6">{{wtf.quick_form(form)}}</div>
+        <div class="col-md-6">
+            <img src="https://images.unsplash.com/photo-1544210163-257effe9399e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8cXVvdGVzfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="" width="500px">
+        </div>
+    </div>
 </div>
+
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1585834447918-f2fcb016c993?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
 {% endblock %}
