@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row" style="margin-top: 50px;">
         <div class="col-md-2"> </div>
-        <div class="col-md-8 bg-info">
+        <div class="jumbotron">
 
             {{wtf.quick_form(registration_form)}}
 
@@ -10,5 +10,16 @@
         <div class="col-md-2"></div>
     </div>
 </div>
-
+<style>
+    body {
+        background-image: url('https://images.unsplash.com/photo-1550041771-aef92f14a6d5?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MzR8fHNhbXN1bmd8ZW58MHx8MHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    
+    .container {
+        margin-top: 200px;
+    }
+</style>
 {% endblock%}
