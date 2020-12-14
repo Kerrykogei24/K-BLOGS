@@ -7,6 +7,7 @@ class Config:
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:dellakomar24@localhost/blogs'
     UPLOADED_PHOTOS_DEST ='app/static/photos'
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
     #email configurations
